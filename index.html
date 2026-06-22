@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DenebrixAI — Enterprise AI Development Company</title>
+<meta name="description" content="DenebrixAI is an enterprise AI development company building custom AI software, autonomous agents, machine learning systems, chatbots and generative AI for global businesses.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://denebrixai.com/">
+<meta property="og:title" content="DenebrixAI — Enterprise AI Development Company">
+<meta property="og:description" content="Custom AI software, autonomous agents, machine learning, chatbots and generative AI for enterprises. 120+ projects delivered.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://denebrixai.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:       #04060f;
+  --bg2:      #080c1a;
+  --surface:  #0d1225;
+  --surface2: #111829;
+  --border:   rgba(255,255,255,.07);
+  --border2:  rgba(255,255,255,.14);
+  --text:     #e8ecfa;
+  --dim:      #7e8aab;
+  --cyan:     #00d4ff;
+  --violet:   #7a5cff;
+  --gold:     #c9a354;
+  --grad: linear-gradient(135deg, #00d4ff, #7a5cff);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; line-height:1.65; overflow-x:hidden; }
+h1,h2,h3,h4,h5 { font-family:'Space Grotesk',sans-serif; letter-spacing:-.02em; }
+a { color:inherit; text-decoration:none; }
+img { display:block; max-width:100%; }
+.container { width:92%; max-width:1200px; margin:0 auto; }
+
+/* ---- GRID BG ---- */
+body::before {
+  content:'';
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,212,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* ---- GLOW ---- */
+.glow-orb {
+  position:fixed; z-index:0; pointer-events:none; border-radius:50%;
+  filter:blur(120px); opacity:.35;
+}
+.glow-1 { width:600px; height:600px; top:-100px; right:-100px; background:#7a5cff; }
+.glow-2 { width:500px; height:500px; bottom:10%; left:-80px; background:#00d4ff; }
+
+/* ---- HEADER ---- */
+header {
+  position:sticky; top:0; z-index:100;
+  background:rgba(4,6,15,.82); backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-wrap { display:flex; justify-content:space-between; align-items:center; padding:20px 0; }
+.logo { display:flex; align-items:center; gap:10px; font-family:'Space Grotesk'; font-weight:700; font-size:20px; }
+.logo-icon { width:32px; height:32px; }
+nav { display:flex; align-items:center; gap:36px; }
+nav a { font-size:14px; font-weight:500; color:var(--dim); transition:.2s; }
+nav a:hover { color:var(--text); }
+.btn-header {
+  padding:10px 22px; border-radius:999px; font-size:13.5px; font-weight:700;
+  background:var(--grad); color:#03050d;
+}
+@media(max-width:860px){ nav ul { display:none; } }
+
+/* ---- HERO ---- */
+.hero { position:relative; z-index:1; padding:120px 0 90px; text-align:center; }
+.badge {
+  display:inline-flex; align-items:center; gap:8px; margin-bottom:28px;
+  font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--gold); border:1px solid rgba(201,163,84,.3); padding:8px 18px;
+  border-radius:999px; background:rgba(201,163,84,.06);
+}
+.badge::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--gold); }
+.hero h1 {
+  font-size:clamp(38px,5.8vw,70px); line-height:1.07; font-weight:700;
+  max-width:900px; margin:0 auto 26px;
+}
+.hero h1 em {
+  font-style:normal;
+  background:var(--grad);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.hero p { max-width:580px; margin:0 auto; color:var(--dim); font-size:17px; }
+.hero-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:44px; }
+.btn-primary {
+  padding:16px 34px; border-radius:999px; font-weight:700; font-size:14.5px;
+  background:var(--grad); color:#03050d;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 20px 50px -18px rgba(0,212,255,.5);
+}
+.btn-outline {
+  padding:16px 34px; border-radius:999px; font-weight:700; font-size:14.5px;
+  border:1px solid var(--border2); color:var(--text);
+}
+
+/* ---- STATS ---- */
+.stats { position:relative; z-index:1; padding:0 0 90px; }
+.stats-inner {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--border); border-radius:20px; overflow:hidden;
+  background:var(--surface); gap:1px;
+}
+.stat { background:var(--surface); padding:38px 24px; text-align:center; }
+.stat-n { font-family:'Space Grotesk'; font-size:42px; font-weight:700; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.stat-l { font-size:13.5px; color:var(--dim); margin-top:6px; }
+@media(max-width:700px){ .stats-inner{ grid-template-columns:1fr 1fr; } }
+
+/* ---- SECTION HEAD ---- */
+.sec-head { text-align:center; max-width:660px; margin:0 auto 68px; position:relative; z-index:1; }
+.sec-head .badge { margin-bottom:20px; }
+.sec-head h2 { font-size:clamp(28px,3.8vw,44px); font-weight:700; margin-bottom:14px; }
+.sec-head p { color:var(--dim); font-size:16px; }
+
+/* ---- SERVICES FULL ---- */
+.services { position:relative; z-index:1; padding:60px 0 110px; }
+.svc-list { display:flex; flex-direction:column; gap:20px; }
+
+.svc-card {
+  display:grid; grid-template-columns:160px 1fr; gap:44px; align-items:start;
+  background:var(--surface); border:1px solid var(--border); border-radius:24px;
+  padding:42px; transition:.35s;
+}
+.svc-card:hover { border-color:rgba(0,212,255,.3); background:var(--surface2); transform:translateX(4px); }
+
+.svc-infographic {
+  width:160px; height:160px; border-radius:20px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  background:radial-gradient(circle at 30% 30%, rgba(0,212,255,.12), transparent 65%), var(--bg2);
+  border:1px solid var(--border);
+}
+.svc-infographic svg { width:80px; height:80px; }
+
+.svc-tag { font-size:11.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; display:block; }
+.svc-card h3 { font-size:23px; font-weight:700; margin-bottom:12px; }
+.svc-card > div > p { color:var(--dim); font-size:15px; max-width:700px; margin-bottom:18px; }
+.svc-pills { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:20px; }
+.pill { font-size:12.5px; padding:6px 14px; border-radius:999px; border:1px solid var(--border); color:var(--dim); background:rgba(255,255,255,.02); }
+.svc-link { display:inline-flex; align-items:center; gap:7px; font-size:14px; font-weight:700; color:var(--cyan); }
+.svc-link svg { width:15px; height:15px; transition:.25s; }
+.svc-link:hover svg { transform:translateX(4px); }
+
+@media(max-width:780px){
+  .svc-card { grid-template-columns:1fr; }
+  .svc-infographic { width:100px; height:100px; }
+  .svc-infographic svg { width:50px; height:50px; }
+}
+
+/* ---- CORE EXPERTISE ---- */
+.expertise { position:relative; z-index:1; padding:40px 0 110px; }
+.exp-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.exp-card {
+  background:var(--surface); border:1px solid var(--border); border-radius:18px;
+  padding:30px; transition:.3s;
+}
+.exp-card:hover { border-color:rgba(122,92,255,.35); }
+.exp-icon { width:44px; height:44px; border-radius:12px; background:var(--bg2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+.exp-icon svg { width:22px; height:22px; }
+.exp-card h4 { font-size:16px; font-weight:700; margin-bottom:8px; }
+.exp-card p { font-size:13.5px; color:var(--dim); }
+.exp-card a { display:inline-flex; align-items:center; gap:5px; margin-top:14px; font-size:13px; font-weight:700; color:var(--cyan); }
+@media(max-width:900px){ .exp-grid{ grid-template-columns:1fr 1fr; } }
+@media(max-width:520px){ .exp-grid{ grid-template-columns:1fr; } }
+
+/* ---- INDUSTRIES ---- */
+.industries { position:relative; z-index:1; padding:40px 0 110px; }
+.ind-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.ind-card {
+  background:var(--surface); border:1px solid var(--border); border-radius:16px;
+  padding:28px 26px; display:flex; align-items:flex-start; gap:18px; transition:.3s;
+}
+.ind-card:hover { border-color:rgba(0,212,255,.25); }
+.ind-icon { flex-shrink:0; width:40px; height:40px; border-radius:10px; background:var(--bg2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; }
+.ind-icon svg { width:20px; height:20px; }
+.ind-card h5 { font-size:15px; font-weight:700; margin-bottom:6px; }
+.ind-card p { font-size:13px; color:var(--dim); }
+@media(max-width:840px){ .ind-grid{ grid-template-columns:1fr 1fr; } }
+@media(max-width:500px){ .ind-grid{ grid-template-columns:1fr; } }
+
+/* ---- PROCESS ---- */
+.process { position:relative; z-index:1; padding:40px 0 110px; }
+.proc-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.proc-step { padding:36px 30px; border-left:1px solid var(--border); position:relative; }
+.proc-step:first-child { border-left:none; }
+.proc-num { font-family:'Space Grotesk'; font-size:13px; font-weight:700; color:var(--gold); margin-bottom:16px; letter-spacing:.06em; }
+.proc-step h4 { font-size:17px; font-weight:700; margin-bottom:10px; }
+.proc-step p { font-size:14px; color:var(--dim); }
+@media(max-width:840px){ .proc-grid{ grid-template-columns:1fr 1fr; } .proc-step{ border-left:1px solid var(--border); } }
+@media(max-width:520px){ .proc-grid{ grid-template-columns:1fr; } }
+
+/* ---- WORK ---- */
+.work { position:relative; z-index:1; padding:40px 0 110px; }
+.work-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.work-card {
+  background:var(--surface); border:1px solid var(--border); border-radius:18px;
+  padding:32px; transition:.3s; display:block;
+}
+.work-card:hover { border-color:rgba(0,212,255,.3); transform:translateY(-4px); }
+.work-tag { font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--violet); margin-bottom:12px; display:block; }
+.work-card h4 { font-size:18px; font-weight:700; margin-bottom:10px; }
+.work-card p { font-size:14px; color:var(--dim); margin-bottom:16px; }
+.work-link { font-size:13px; font-weight:700; color:var(--cyan); display:inline-flex; align-items:center; gap:6px; }
+.work-link svg { width:13px; height:13px; }
+@media(max-width:840px){ .work-grid{ grid-template-columns:1fr; } }
+
+/* ---- CTA ---- */
+.cta-wrap { position:relative; z-index:1; padding:0 0 110px; }
+.cta-box {
+  border-radius:28px; padding:90px 50px; text-align:center;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(122,92,255,.2), transparent 55%),
+    radial-gradient(circle at 85% 80%, rgba(0,212,255,.18), transparent 55%),
+    var(--surface);
+  border:1px solid var(--border);
+}
+.cta-box h2 { font-size:clamp(28px,3.8vw,46px); font-weight:700; margin-bottom:18px; }
+.cta-box p { color:var(--dim); max-width:540px; margin:0 auto 40px; font-size:17px; }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+.btn-naked { padding:16px 34px; border-radius:999px; font-weight:700; font-size:14.5px; border:1px solid var(--border2); color:var(--text); }
+
+/* ---- FOOTER ---- */
+footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:60px 0 40px; }
+.footer-grid { display:grid; grid-template-columns:2.2fr 1fr 1fr 1fr; gap:36px; margin-bottom:50px; }
+.footer-brand { font-family:'Space Grotesk'; font-weight:700; font-size:18px; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.footer-about { font-size:14px; color:var(--dim); max-width:260px; line-height:1.7; }
+.footer-col h6 { font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.footer-col a { display:block; font-size:14px; color:var(--dim); margin-bottom:11px; transition:.2s; }
+.footer-col a:hover { color:var(--text); }
+.footer-bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; border-top:1px solid var(--border); padding-top:28px; }
+.footer-bottom p { font-size:13px; color:var(--dim); }
+.footer-bottom a { font-size:13px; color:var(--dim); }
+.footer-bottom a:hover { color:var(--cyan); }
+@media(max-width:860px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="glow-orb glow-1"></div>
+<div class="glow-orb glow-2"></div>
+
+<!-- ========= HEADER ========= -->
+<header>
+<div class="container">
+<div class="nav-wrap">
+  <a href="https://denebrixai.com" target="_blank" rel="noopener noreferrer" class="logo">
+    <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="3" fill="#00d4ff"/>
+      <circle cx="6"  cy="7"  r="2" fill="#7a5cff"/>
+      <circle cx="26" cy="8"  r="2" fill="#7a5cff"/>
+      <circle cx="5"  cy="25" r="2" fill="#c9a354"/>
+      <circle cx="27" cy="24" r="2" fill="#c9a354"/>
+      <circle cx="16" cy="28" r="1.6" fill="#00d4ff"/>
+      <path d="M16 16L6 7M16 16L26 8M16 16L5 25M16 16L27 24M16 16L16 28" stroke="rgba(255,255,255,.22)" stroke-width=".9"/>
+    </svg>
+    DenebrixAI
+  </a>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#industries">Industries</a>
+    <a href="#work">Our Work</a>
+    <a href="https://denebrixai.com/contact/" target="_blank" rel="noopener noreferrer">Contact</a>
+    <a class="btn-header" href="https://denebrixai.com" target="_blank" rel="noopener noreferrer">Start a Project</a>
+  </nav>
+</div>
+</div>
+</header>
+
+<!-- ========= HERO ========= -->
+<section class="hero">
+<div class="container">
+  <span class="badge">Award-Winning AI Agency · 10+ Years</span>
+  <h1>We build AI systems<br>enterprises <em>actually ship</em></h1>
+  <p>Custom AI software, autonomous agents, machine learning and generative AI — designed for production, not the demo stage.</p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="https://denebrixai.com/service/" target="_blank" rel="noopener noreferrer">Explore all services</a>
+    <a class="btn-outline" href="https://denebrixai.com/contact/" target="_blank" rel="noopener noreferrer">Talk to our team</a>
+  </div>
+</div>
+</section>
+
+<!-- ========= STATS ========= -->
+<section class="stats">
+<div class="container">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-n">10+</div><div class="stat-l">Years of AI expertise</div></div>
+    <div class="stat"><div class="stat-n">120+</div><div class="stat-l">AI projects delivered</div></div>
+    <div class="stat"><div class="stat-n">46+</div><div class="stat-l">AI engineers worldwide</div></div>
+    <div class="stat"><div class="stat-n">15M+</div><div class="stat-l">Data points processed</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ========= SERVICES ========= -->
+<section class="services" id="services">
+<div class="container">
+  <div class="sec-head">
+    <span class="badge">What we build</span>
+    <h2>Five AI disciplines.<br>One engineering team.</h2>
+    <p>Every service is delivered by the same senior engineers who designed it — from architecture diagram to production deployment.</p>
+  </div>
+
+  <div class="svc-list">
+
+    <!-- Generative AI -->
+    <div class="svc-card">
+      <div class="svc-infographic">
+        <svg viewBox="0 0 80 80" fill="none">
+          <path d="M40 10l4.2 11.4L56 26l-11.8 4.6L40 42l-4.2-11.4L24 26l11.8-4.6z" stroke="#00d4ff" stroke-width="2" stroke-linejoin="round" fill="rgba(0,212,255,.06)"/>
+          <circle cx="20" cy="58" r="4" stroke="#7a5cff" stroke-width="2"/>
+          <circle cx="60" cy="58" r="4" stroke="#c9a354" stroke-width="2"/>
+          <circle cx="40" cy="66" r="3" stroke="#00d4ff" stroke-width="2"/>
+          <path d="M24 58h12M44 58h12M40 42v20" stroke="rgba(255,255,255,.25)" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <div>
+        <span class="svc-tag">Generative Systems</span>
+        <h3>Generative AI Development</h3>
+        <p>We embed LLMs into your products and workflows — content generation, document automation, code assistance — fine-tuned on your data, aligned to your brand voice, wired into your existing stack. Private, secure, production-ready.</p>
+        <div class="svc-pills">
+          <span class="pill">LLM fine-tuning</span>
+          <span class="pill">RAG architecture</span>
+          <span class="pill">Proprietary model training</span>
+          <span class="pill">Brand-consistent output</span>
+        </div>
+        <a class="svc-link" href="https://denebrixai.com/generative-ai-development-services/" target="_blank" rel="noopener noreferrer">
+          Explore Generative AI services
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- AI Agents -->
+    <div class="svc-card">
+      <div class="svc-infographic">
+        <svg viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="40" r="8" stroke="#00d4ff" stroke-width="2" fill="rgba(0,212,255,.06)"/>
+          <circle cx="16" cy="20" r="4" stroke="#7a5cff" stroke-width="2"/>
+          <circle cx="64" cy="20" r="4" stroke="#7a5cff" stroke-width="2"/>
+          <circle cx="16" cy="60" r="4" stroke="#c9a354" stroke-width="2"/>
+          <circle cx="64" cy="60" r="4" stroke="#c9a354" stroke-width="2"/>
+          <path d="M33 33L19 23M47 33L61 23M33 47L19 57M47 47L61 57" stroke="rgba(255,255,255,.3)" stroke-width="1.4"/>
+          <path d="M36 40h-4M44 40h4M40 36v-4M40 44v4" stroke="#00d4ff" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <span class="svc-tag">Autonomous Systems</span>
+        <h3>AI Agent Development</h3>
+        <p>Autonomous agents that plan, act and adapt — handling multi-step tasks, tool use and complex decision-making without constant supervision. Built with guardrails, observability and human-in-the-loop controls from day one.</p>
+        <div class="svc-pills">
+          <span class="pill">Multi-agent orchestration</span>
+          <span class="pill">Tool & API integration</span>
+          <span class="pill">Human-in-the-loop controls</span>
+          <span class="pill">Agentic pipelines</span>
+        </div>
+        <a class="svc-link" href="https://denebrixai.com/ai-agent-development-services/" target="_blank" rel="noopener noreferrer">
+          Explore AI Agent services
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="svc-card">
+      <div class="svc-infographic">
+        <svg viewBox="0 0 80 80" fill="none">
+          <rect x="10" y="14" width="42" height="32" rx="8" stroke="#00d4ff" stroke-width="2" fill="rgba(0,212,255,.05)"/>
+          <path d="M18 46l-6 12 14-8" stroke="#00d4ff" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="24" cy="30" r="2.5" fill="#7a5cff"/>
+          <circle cx="36" cy="30" r="2.5" fill="#7a5cff"/>
+          <circle cx="48" cy="30" r="2.5" fill="#7a5cff"/>
+          <rect x="58" y="28" width="14" height="10" rx="4" stroke="#c9a354" stroke-width="1.8"/>
+          <path d="M61 33h8" stroke="#c9a354" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <span class="svc-tag">Conversational AI</span>
+        <h3>AI Chatbot Development</h3>
+        <p>Conversational systems that actually resolve issues — grounded in your knowledge base, connected to your CRM and tools, and handed off to a human cleanly when needed. Built for support, sales and internal operations across all channels.</p>
+        <div class="svc-pills">
+          <span class="pill">RAG-grounded responses</span>
+          <span class="pill">Omnichannel deployment</span>
+          <span class="pill">CRM integration</span>
+          <span class="pill">Seamless human handoff</span>
+        </div>
+        <a class="svc-link" href="https://denebrixai.com/ai-chatbot-development-services/" target="_blank" rel="noopener noreferrer">
+          Explore Chatbot Development
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ML -->
+    <div class="svc-card">
+      <div class="svc-infographic">
+        <svg viewBox="0 0 80 80" fill="none">
+          <path d="M12 60h56" stroke="#7a5cff" stroke-width="2"/>
+          <path d="M12 60V14" stroke="#7a5cff" stroke-width="2"/>
+          <path d="M16 52L28 36l12 10L54 28l14 24" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="54" cy="28" r="3.5" fill="#c9a354"/>
+          <circle cx="28" cy="36" r="3" fill="#7a5cff"/>
+          <circle cx="40" cy="46" r="3" fill="#7a5cff"/>
+        </svg>
+      </div>
+      <div>
+        <span class="svc-tag">Predictive Analytics</span>
+        <h3>AI / ML Development</h3>
+        <p>We turn your historical data into forward-looking decisions — demand forecasting, churn prediction, fraud detection and anomaly scoring. Models are trained on your data, validated rigorously, monitored post-launch and continuously retrained.</p>
+        <div class="svc-pills">
+          <span class="pill">Forecasting models</span>
+          <span class="pill">Anomaly detection</span>
+          <span class="pill">Fraud detection</span>
+          <span class="pill">Continuous retraining</span>
+        </div>
+        <a class="svc-link" href="https://denebrixai.com/ai-ml-development-services/" target="_blank" rel="noopener noreferrer">
+          Explore ML Development
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Consulting -->
+    <div class="svc-card">
+      <div class="svc-infographic">
+        <svg viewBox="0 0 80 80" fill="none">
+          <rect x="14" y="16" width="52" height="38" rx="6" stroke="#c9a354" stroke-width="2" fill="rgba(201,163,84,.05)"/>
+          <path d="M22 36l8-8 8 8 8-10 8 14" stroke="#00d4ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M26 60h28" stroke="#c9a354" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M40 54v6" stroke="#c9a354" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <span class="svc-tag">Strategic Roadmapping</span>
+        <h3>AI Consulting Services</h3>
+        <p>Before we write a line of code, we map where AI actually moves your business forward — and where it doesn't. You leave with a prioritized roadmap, ROI projections, realistic timelines, and a clear view of cost versus return.</p>
+        <div class="svc-pills">
+          <span class="pill">AI readiness audit</span>
+          <span class="pill">ROI-prioritized roadmap</span>
+          <span class="pill">Implementation planning</span>
+          <span class="pill">Vendor selection</span>
+        </div>
+        <a class="svc-link" href="https://denebrixai.com/ai-consulting-services/" target="_blank" rel="noopener noreferrer">
+          Explore AI Consulting
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ========= CORE EXPERTISE ========= -->
+<section class="expertise">
+<div class="container">
+  <div class="sec-head">
+    <span class="badge">Core AI expertise</span>
+    <h2>The technical stack behind every project</h2>
+  </div>
+  <div class="exp-grid">
+
+    <div class="exp-card">
+      <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7L22 12l-7.6 3L12 22l-2.4-7L2 12l7.6-3z" stroke="#00d4ff" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+      <h4>Generative AI</h4>
+      <p>LLM fine-tuning, RAG systems and proprietary model architectures that keep your data private.</p>
+      <a href="https://denebrixai.com/generative-ai-development-services/" target="_blank" rel="noopener noreferrer">Learn more <svg viewBox="0 0 24 24" fill="none" style="width:11px;height:11px;display:inline"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V14M8 20V10M12 20V4M16 20V10M20 20V14" stroke="#7a5cff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <h4>Machine Learning</h4>
+      <p>Predictive models trained on your real data — demand forecasting, churn, fraud and anomaly detection.</p>
+      <a href="https://denebrixai.com/ai-ml-development-services/" target="_blank" rel="noopener noreferrer">Learn more <svg viewBox="0 0 24 24" fill="none" style="width:11px;height:11px;display:inline"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#00d4ff" stroke-width="1.6"/><path d="M6 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#00d4ff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <h4>Deep Learning</h4>
+      <p>Neural network architectures for speech processing, image recognition and autonomous cognitive tasks.</p>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" stroke="#c9a354" stroke-width="1.6"/><rect x="13" y="3" width="8" height="8" rx="2" stroke="#c9a354" stroke-width="1.6"/><rect x="3" y="13" width="8" height="8" rx="2" stroke="#c9a354" stroke-width="1.6"/><path d="M13 17h8M17 13v8" stroke="#c9a354" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <h4>Computer Vision</h4>
+      <p>CNN-based object detection and real-time visual processing for manufacturing, security and retail.</p>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="#00d4ff" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#00d4ff" stroke-width="1.6"/></svg></div>
+      <h4>Predictive Analytics</h4>
+      <p>Real-time and historical data fusion to forecast trends, optimize operations and guide strategy.</p>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h7" stroke="#7a5cff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <h4>Natural Language Processing</h4>
+      <p>Sentiment detection, document automation and semantic search — at enterprise scale.</p>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5" rx="9" ry="3" stroke="#c9a354" stroke-width="1.6"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5" stroke="#c9a354" stroke-width="1.6"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3" stroke="#c9a354" stroke-width="1.6"/></svg></div>
+      <h4>Data Science</h4>
+      <p>Secure, robust data pipelines that validate and prepare your datasets for accurate AI scaling.</p>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" stroke="#00d4ff" stroke-width="1.6"/><path d="M2 12h20M12 2c-2.8 3-4 6.3-4 10s1.2 7 4 10M12 2c2.8 3 4 6.3 4 10s-1.2 7-4 10" stroke="#00d4ff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <h4>MLOps & Deployment</h4>
+      <p>Production-grade deployment, monitoring and continuous retraining — so models stay accurate after launch.</p>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ========= INDUSTRIES ========= -->
+<section class="industries" id="industries">
+<div class="container">
+  <div class="sec-head">
+    <span class="badge">Industries we serve</span>
+    <h2>AI built for your sector's specific rules</h2>
+    <p>Generic AI doesn't survive contact with real industry requirements. Every solution we build is domain-aware from the first line of code.</p>
+  </div>
+  <div class="ind-grid">
+
+    <div class="ind-card">
+      <div class="ind-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a7 7 0 000 14A7 7 0 0012 2z" stroke="#00d4ff" stroke-width="1.6"/><path d="M8 22v-2a4 4 0 018 0v2" stroke="#00d4ff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div><h5>Healthcare</h5><p>Predictive diagnostics, medical record automation and clinical AI with HIPAA-compliant architecture.</p></div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ind-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="#7a5cff" stroke-width="1.6"/><path d="M3 10h18" stroke="#7a5cff" stroke-width="1.6"/></svg></div>
+      <div><h5>Finance</h5><p>Fraud detection, risk modelling and automated compliance reporting for banks and fintech companies.</p></div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ind-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M6 2h12l4 8-10 12L2 10z" stroke="#c9a354" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+      <div><h5>Retail & E-commerce</h5><p>Personalized recommendation engines and inventory optimization powered by real purchase data.</p></div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ind-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#00d4ff" stroke-width="1.6"/><path d="M16 7V5a2 2 0 00-4 0v2M8 7V5a2 2 0 00-4 0" stroke="#00d4ff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div><h5>Manufacturing</h5><p>Computer vision quality control and predictive maintenance that cuts unplanned downtime.</p></div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ind-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9A10 10 0 1112 2" stroke="#7a5cff" stroke-width="1.6" stroke-linecap="round"/><path d="M22 2L12 12" stroke="#7a5cff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div><h5>Telecom</h5><p>Network anomaly prediction and AI customer support agents that reduce churn at scale.</p></div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ind-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 18l7-14 7 14H5z" stroke="#c9a354" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 14h8" stroke="#c9a354" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+      <div><h5>Supply Chain</h5><p>Real-time route optimization and demand sensing to eliminate logistics delays and overstock.</p></div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ind-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#00d4ff" stroke-width="1.6"/><path d="M12 2v4M12 18v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M2 12h4M18 12h4M4.2 19.8l2.8-2.8M17 7l2.8-2.8" stroke="#00d4ff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div><h5>Energy & Utilities</h5><p>Grid anomaly detection and consumption forecasting for smarter, sustainable operations.</p></div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ind-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="4" stroke="#7a5cff" stroke-width="1.6"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#7a5cff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div><h5>Automotive</h5><p>Reinforcement learning for autonomous systems and computer vision for vehicle interface intelligence.</p></div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ind-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22V10M5 10l7-8 7 8" stroke="#c9a354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 22v-5h6v5" stroke="#c9a354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div><h5>Agritech</h5><p>Satellite and sensor data fusion for crop monitoring, yield prediction and precision agriculture.</p></div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ========= PROCESS ========= -->
+<section class="process">
+<div class="container">
+  <div class="sec-head">
+    <span class="badge">How we work</span>
+    <h2>Four phases from idea to production</h2>
+  </div>
+  <div class="proc-grid">
+    <div class="proc-step">
+      <div class="proc-num">01 — Discovery</div>
+      <h4>AI Readiness Audit</h4>
+      <p>We assess your data, systems and compliance landscape to identify where AI creates real, measurable leverage — not just where it sounds good in a board deck.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">02 — Architecture</div>
+      <h4>Design & Prototype</h4>
+      <p>We build the system blueprint, select the right models, and test a proof-of-concept against your real-world conditions before a single production line is written.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">03 — Development</div>
+      <h4>Build & Train</h4>
+      <p>Engineers build and train against your actual data, with weekly checkpoints. No black boxes — you see the system at every stage.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">04 — Deployment</div>
+      <h4>Ship & Scale</h4>
+      <p>We deploy to production, monitor performance with MLOps frameworks, and keep retraining the system as your data and usage grow.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ========= WORK ========= -->
+<section class="work" id="work">
+<div class="container">
+  <div class="sec-head">
+    <span class="badge">Case studies</span>
+    <h2>Systems we've shipped</h2>
+    <p>A sample of production AI built and deployed for real clients across healthcare and enterprise verticals.</p>
+  </div>
+  <div class="work-grid">
+
+    <a class="work-card" href="https://denebrixai.com/ai-care-system/" target="_blank" rel="noopener noreferrer">
+      <span class="work-tag">Healthcare AI</span>
+      <h4>AI Care System</h4>
+      <p>Intelligent clinical support system that automates medical record management and predicts patient needs for healthcare providers.</p>
+      <span class="work-link">View case study <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+
+    <a class="work-card" href="https://denebrixai.com/360-alert/" target="_blank" rel="noopener noreferrer">
+      <span class="work-tag">Healthcare AI</span>
+      <h4>360Alert</h4>
+      <p>Real-time alert and monitoring platform — intelligent triage that reduces response time and flags critical patient changes before they escalate.</p>
+      <span class="work-link">View case study <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+
+    <a class="work-card" href="https://denebrixai.com/auto-mask-ai/" target="_blank" rel="noopener noreferrer">
+      <span class="work-tag">AI Tool</span>
+      <h4>Auto Mask AI</h4>
+      <p>Computer vision tool that automates image masking and segmentation — removing hours of manual editing from creative and manufacturing workflows.</p>
+      <span class="work-link">View case study <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+
+  </div>
+  <div style="text-align:center; margin-top:36px;">
+    <a class="btn-outline" href="https://denebrixai.com/project/" target="_blank" rel="noopener noreferrer">View all projects →</a>
+  </div>
+</div>
+</section>
+
+<!-- ========= CTA ========= -->
+<section class="cta-wrap">
+<div class="container">
+<div class="cta-box">
+  <h2>Turn your hardest business problem into an AI system</h2>
+  <p>Work with a team that has shipped 120+ production AI systems — not a vendor that stops at the proof-of-concept stage.</p>
+  <div class="cta-btns">
+    <a class="btn-primary" href="https://denebrixai.com/contact/" target="_blank" rel="noopener noreferrer">Get in touch</a>
+    <a class="btn-naked" href="https://denebrixai.com/service/" target="_blank" rel="noopener noreferrer">Browse all services</a>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ========= FOOTER ========= -->
+<footer>
+<div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2.5" fill="#00d4ff"/><circle cx="4" cy="5" r="1.5" fill="#7a5cff"/><circle cx="20" cy="6" r="1.5" fill="#7a5cff"/><circle cx="3" cy="19" r="1.5" fill="#c9a354"/><circle cx="21" cy="18" r="1.5" fill="#c9a354"/><path d="M12 12L4 5M12 12L20 6M12 12L3 19M12 12L21 18" stroke="rgba(255,255,255,.2)" stroke-width=".8"/></svg>
+        DenebrixAI
+      </div>
+      <p class="footer-about">Enterprise AI development company — custom software, autonomous agents, ML and generative AI for global businesses.</p>
+    </div>
+    <div class="footer-col">
+      <h6>Services</h6>
+      <a href="https://denebrixai.com/generative-ai-development-services/" target="_blank" rel="noopener noreferrer">Generative AI</a>
+      <a href="https://denebrixai.com/ai-agent-development-services/" target="_blank" rel="noopener noreferrer">AI Agents</a>
+      <a href="https://denebrixai.com/ai-chatbot-development-services/" target="_blank" rel="noopener noreferrer">AI Chatbots</a>
+      <a href="https://denebrixai.com/ai-ml-development-services/" target="_blank" rel="noopener noreferrer">AI / ML</a>
+      <a href="https://denebrixai.com/ai-consulting-services/" target="_blank" rel="noopener noreferrer">AI Consulting</a>
+    </div>
+    <div class="footer-col">
+      <h6>Company</h6>
+      <a href="https://denebrixai.com/about/" target="_blank" rel="noopener noreferrer">About Us</a>
+      <a href="https://denebrixai.com/project/" target="_blank" rel="noopener noreferrer">Our Work</a>
+      <a href="https://denebrixai.com/blogs/" target="_blank" rel="noopener noreferrer">Blog</a>
+      <a href="https://denebrixai.com/contact/" target="_blank" rel="noopener noreferrer">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h6>Legal</h6>
+      <a href="https://denebrixai.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+      <a href="https://denebrixai.com" target="_blank" rel="noopener noreferrer">denebrixai.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 DenebrixAI — Enterprise AI Development & Consulting · London, UK · Brooklyn, NY</p>
+    <a href="https://denebrixai.com" target="_blank" rel="noopener noreferrer">denebrixai.com →</a>
+  </div>
+</div>
+</footer>
+
+</body>
+</html>
